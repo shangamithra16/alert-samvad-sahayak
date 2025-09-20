@@ -17,16 +17,14 @@ const Index = () => {
       subtitle: "Real-time sensor monitoring with intelligent alerts",
       dashboard: "Dashboard",
       alerts: "Report Alerts", 
-      assistant: "AI Assistant",
-      configureFirebase: "Configure Firebase Connection"
+      assistant: "AI Assistant"
     },
     hindi: {
       title: "कृषि निगरानी प्रणाली",
       subtitle: "बुद्धिमान चेतावनी के साथ रियल-टाइम सेंसर निगरानी",
       dashboard: "डैशबोर्ड",
       alerts: "चेतावनी रिपोर्ट करें",
-      assistant: "एआई सहायक",
-      configureFirebase: "Firebase कनेक्शन कॉन्फ़िगर करें"
+      assistant: "एआई सहायक"
     }
   };
 
