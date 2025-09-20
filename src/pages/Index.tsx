@@ -63,21 +63,6 @@ const Index = () => {
         </div>
       </header>
 
-      {/* Firebase Configuration Notice */}
-      <div className="container mx-auto px-4 py-4">
-        <Card className="border-warning bg-warning/10 p-4">
-          <div className="flex items-center gap-3">
-            <AlertTriangle className="h-5 w-5 text-warning" />
-            <div className="text-sm">
-              <strong>{t.configureFirebase}:</strong>{' '}
-              {language === 'english' 
-                ? 'Please update your Firebase configuration in src/config/firebase.ts with your actual Firebase project credentials.'
-                : 'कृपया src/config/firebase.ts में अपनी वास्तविक Firebase परियोजना क्रेडेंशियल के साथ अपना Firebase कॉन्फ़िगरेशन अपडेट करें।'
-              }
-            </div>
-          </div>
-        </Card>
-      </div>
 
       {/* Main Content */}
       <main className="container mx-auto px-4 py-8">

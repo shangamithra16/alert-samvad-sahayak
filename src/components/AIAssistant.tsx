@@ -84,6 +84,8 @@ const AIAssistant: React.FC<AIAssistantProps> = ({ language }) => {
     setLoading(true);
 
     try {
+      console.log('Sending OpenAI request with model: gpt-3.5-turbo');
+      
       const response = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
         headers: {
@@ -105,20 +107,31 @@ const AIAssistant: React.FC<AIAssistantProps> = ({ language }) => {
         }),
       });
 
+      console.log('Response status:', response.status);
+      
       if (!response.ok) {
-        throw new Error('Failed to get AI response');
+        const errorText = await response.text();
+        console.error('OpenAI API Error:', errorText);
+        throw new Error(`OpenAI API Error: ${response.status} - ${errorText}`);
       }
 
       const data = await response.json();
+      console.log('OpenAI Response:', data);
+      
+      if (!data.choices || !data.choices[0] || !data.choices[0].message) {
+        throw new Error('Invalid response format from OpenAI');
+      }
+      
       const assistantMessage = data.choices[0].message.content;
       
       setMessages(prev => [...prev, { role: 'assistant', content: assistantMessage }]);
       speak(assistantMessage);
       
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Detailed Error:', error);
       toast({
         title: t.errorOccurred,
+        description: error instanceof Error ? error.message : 'Unknown error occurred',
         variant: "destructive"
       });
     } finally {
