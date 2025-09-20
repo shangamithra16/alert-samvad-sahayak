@@ -98,6 +98,39 @@ export type Database = {
         }
         Relationships: []
       }
+      device_api_keys: {
+        Row: {
+          api_key: string
+          community_id: string
+          created_at: string
+          created_by: string | null
+          device_name: string | null
+          id: string
+          is_active: boolean
+          last_used_at: string | null
+        }
+        Insert: {
+          api_key: string
+          community_id: string
+          created_at?: string
+          created_by?: string | null
+          device_name?: string | null
+          id?: string
+          is_active?: boolean
+          last_used_at?: string | null
+        }
+        Update: {
+          api_key?: string
+          community_id?: string
+          created_at?: string
+          created_by?: string | null
+          device_name?: string | null
+          id?: string
+          is_active?: boolean
+          last_used_at?: string | null
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           community_id: string | null
@@ -212,7 +245,14 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      get_user_community_id: {
+        Args: { _user_id: string }
+        Returns: string
+      }
+      validate_device_api_key: {
+        Args: { _api_key: string }
+        Returns: string
+      }
     }
     Enums: {
       [_ in never]: never
