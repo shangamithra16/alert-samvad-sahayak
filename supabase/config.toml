@@ -1,1 +1,7 @@
 project_id = "uaezagpjlwrnyrryfano"
+
+[functions.ai-chat]
+verify_jwt = true
+
+[functions.sensor-data-ingestion]
+verify_jwt = false
